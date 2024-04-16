@@ -15,7 +15,7 @@ CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 
 @app.errorhandler(401)
-def unauthorized(error):
+def unauthorized(error) -> str:
     """ Unauthorized error handler
     """
     return jsonify({"error": "Unauthorized"}), 401
