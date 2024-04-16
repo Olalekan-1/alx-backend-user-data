@@ -21,6 +21,7 @@ class Auth():
         for patha in excluded_paths:
             if path + '/' == patha:
                 return False
+
             if path == patha:
                 return False
 
