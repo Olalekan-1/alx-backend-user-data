@@ -13,7 +13,18 @@ class Auth():
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ require authentication to resources
         """
-        return False
+        if not path:
+            return True
+        if not excluded_paths or len(excluded_paths) == 0:
+            return True
+
+        for patha in excluded_paths:
+            if path + '/' == patha:
+                return False
+            if path == patha:
+                return False
+
+        return True
 
     def authorization_header(self, request=None) -> str:
         """ The authorization header
